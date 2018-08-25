@@ -53,7 +53,12 @@ import NetFS
 	var managedUrls: [URL] = []
 
 	@objc public dynamic var items: [DSFMountingYardItem] = []
+}
 
+// MARK: Loading and saving
+
+extension DSFMountingYardController
+{
 	func load()
 	{
 		NSUserNotificationCenter.default.delegate = self
@@ -97,110 +102,6 @@ import NetFS
 		}
 		return false
 	}
-
-	func mount(item: DSFMountingYardItem)
-	{
-		if let mountPoint = item.validatedMountPoint()
-		{
-			// Already mounted!  Just show it
-			NSWorkspace.shared.activateFileViewerSelecting([mountPoint])
-			return
-		}
-
-		if let url = URL(string: item.address)
-		{
-			let serverPath = url as CFURL
-			var requestID: AsyncRequestID?
-			let queue = DispatchQueue.main
-
-			guard let scheme = url.scheme,
-				!scheme.isEmpty else
-			{
-				return
-			}
-
-			if !self.knownSchemes.contains(scheme)
-			{
-				// If we don't know what the scheme is, just let the finder handle it
-				NSWorkspace.shared.open(url)
-				return
-			}
-
-			var options: [String: Any]?
-			if item.guest
-			{
-				options = [:]
-				options![kNetFSUseGuestKey] = true
-			}
-
-			item.connecting = true
-
-			let result = NetFSMountURLAsync(
-				serverPath,
-				self.mountLocation as CFURL,
-				nil,
-				nil,
-				(options != nil) ? (options as! CFMutableDictionary) : nil,
-				nil,
-				&requestID,
-				queue
-			)
-			{ [weak item, weak self] (stat: Int32, _: AsyncRequestID?, mountpoints: CFArray?) in
-				// Done!
-				print("msg: \(stat) mountpoint: \(String(describing: mountpoints))")
-
-				if item != nil, stat == 0
-				{
-					item!.connecting = false
-					let pos = mountpoints as! [String]
-					let urls = pos.map { URL(fileURLWithPath: $0) }
-
-					item!.mountedPoint = urls.first!
-
-					self?.showConnectionNotification(for: item!)
-
-					NSWorkspace.shared.activateFileViewerSelecting(urls)
-				}
-			}
-			if result != 0
-			{
-				print("result: \(result)")
-			}
-		}
-	}
-
-	func showConnectionNotification(for item: DSFMountingYardItem)
-	{
-		let notification = NSUserNotification()
-		notification.title = NSLocalizedString("Remote server is connected", comment: "Notification message when server is successfully connected")
-		notification.actionButtonTitle = "Show me"
-		notification.hasActionButton = true
-		notification.userInfo = ["mountPoint": item.mountedPoint!.path]
-
-		let msg = String.localizedStringWithFormat(
-			NSLocalizedString("The server ‘%@’ is now available", comment: "Descriptive message when server connects"),
-			item.name
-		)
-		notification.informativeText = msg
-		notification.soundName = NSUserNotificationDefaultSoundName
-		NSUserNotificationCenter.default.deliver(notification)
-	}
-
-	public func userNotificationCenter(_: NSUserNotificationCenter, shouldPresent _: NSUserNotification) -> Bool
-	{
-		return true
-	}
-
-	public func userNotificationCenter(_: NSUserNotificationCenter, didActivate notification: NSUserNotification)
-	{
-		if let urlPath = notification.userInfo?["mountPoint"] as? String
-		{
-			let url = URL(fileURLWithPath: urlPath)
-			NSWorkspace.shared.activateFileViewerSelecting([url])
-		}
-	}
-
-	// MARK: - Writing
 
 	func save() -> Bool
 	{
@@ -259,5 +160,138 @@ import NetFS
 		self.managedUrls = self.items.map { $0.url! }
 
 		return true
+	}
+}
+
+// MARK: Mounting items
+
+extension DSFMountingYardController
+{
+	func mount(item: DSFMountingYardItem)
+	{
+		if let mountPoint = item.validatedMountPoint()
+		{
+			// Already mounted!  Just show it
+			NSWorkspace.shared.activateFileViewerSelecting([mountPoint])
+			return
+		}
+
+		if let url = URL(string: item.address)
+		{
+			let serverPath = url as CFURL
+			var requestID: AsyncRequestID?
+			let queue = DispatchQueue.main
+
+			guard let scheme = url.scheme,
+				!scheme.isEmpty else
+			{
+				return
+			}
+
+			if !self.knownSchemes.contains(scheme)
+			{
+				// If we don't know what the scheme is, just let the finder handle it
+				self.mountUsingFinder(item: item)
+				return
+			}
+
+			var options: [String: Any]?
+			if item.guest
+			{
+				options = [:]
+				options![kNetFSUseGuestKey] = true
+			}
+
+			item.connecting = true
+
+			let result = NetFSMountURLAsync(
+				serverPath,
+				self.mountLocation as CFURL,
+				nil,
+				nil,
+				(options != nil) ? (options as! CFMutableDictionary) : nil,
+				nil,
+				&requestID,
+				queue
+			)
+			{ [weak item, weak self] (stat: Int32, _: AsyncRequestID?, mountpoints: CFArray?) in
+				// Done!
+				print("msg: \(stat) mountpoint: \(String(describing: mountpoints))")
+
+				if self != nil, item != nil, stat == 0
+				{
+					item!.connecting = false
+					let pos = mountpoints as! [String]
+					let urls = pos.map { URL(fileURLWithPath: $0) }
+
+					item!.mountedPoint = urls.first!
+
+					self?.showConnectionNotification(for: item!)
+
+					NSWorkspace.shared.activateFileViewerSelecting(urls)
+				}
+			}
+			if result != 0
+			{
+				print("result: \(result)")
+			}
+		}
+	}
+
+	func mountUsingFinder(item: DSFMountingYardItem)
+	{
+		if let url = URL(string: item.address)
+		{
+			var updatedURL = url
+
+			// Put the name in the default 'user' location
+			if !item.username.isEmpty, !item.guest,
+				var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+			{
+				urlComponents.user = item.username
+				if let updated = urlComponents.url
+				{
+					updatedURL = updated
+				}
+			}
+
+			NSWorkspace.shared.open(updatedURL)
+		}
+	}
+}
+
+	// MARK: Notification handling
+
+extension DSFMountingYardController
+{
+	func showConnectionNotification(for item: DSFMountingYardItem)
+	{
+		let notification = NSUserNotification()
+		notification.title = NSLocalizedString("Remote server is connected", comment: "Notification message when server is successfully connected")
+		notification.actionButtonTitle = "Show me"
+		notification.hasActionButton = true
+		notification.userInfo = ["mountPoint": item.mountedPoint!.path]
+
+		let msg = String.localizedStringWithFormat(
+			NSLocalizedString("The server ‘%@’ is now available", comment: "Descriptive message when server connects"),
+			item.name
+		)
+		notification.informativeText = msg
+		notification.soundName = NSUserNotificationDefaultSoundName
+		NSUserNotificationCenter.default.deliver(notification)
+	}
+
+	public func userNotificationCenter(_: NSUserNotificationCenter, shouldPresent _: NSUserNotification) -> Bool
+	{
+		return true
+	}
+
+	public func userNotificationCenter(_: NSUserNotificationCenter, didActivate notification: NSUserNotification)
+	{
+		if let urlPath = notification.userInfo?["mountPoint"] as? String
+		{
+			let url = URL(fileURLWithPath: urlPath)
+			NSWorkspace.shared.activateFileViewerSelecting([url])
+		}
 	}
 }
