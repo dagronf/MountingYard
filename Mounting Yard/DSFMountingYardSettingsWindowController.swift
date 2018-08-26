@@ -124,7 +124,24 @@ class DSFMountingYardSettingsWindowController: NSWindowController, NSWindowDeleg
 	{
 		if let item = itemsArrayController.selectedObjects.first as? DSFMountingYardItem
 		{
-			self.yardController().mount(item: item)
+			_ = self.yardController().mount(item: item)
 		}
+	}
+
+	@IBAction func actionButton(_ sender: NSButton)
+	{
+		NSMenu.popUpContextMenu(sender.menu!,
+								with: NSApp.currentEvent!,
+								for: sender)
+	}
+
+	@IBAction func share(_: Any)
+	{
+		_ = self.yardController().shareItems()
+	}
+
+	@IBAction func importData(_: Any)
+	{
+		_ = self.yardController().importItems()
 	}
 }

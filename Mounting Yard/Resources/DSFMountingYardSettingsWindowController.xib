@@ -31,7 +31,7 @@
             <value key="maxSize" type="size" width="800" height="512"/>
             <view key="contentView" wantsLayer="YES" id="oD6-02-gl8">
                 <rect key="frame" x="0.0" y="0.0" width="677" height="280"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="8ua-tE-VrP">
                         <rect key="frame" x="0.0" y="0.0" width="68" height="280"/>
@@ -161,42 +161,73 @@
                                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMf-0K-86H">
                                                 <rect key="frame" x="0.0" y="8" width="242" height="21"/>
                                                 <subviews>
-                                                    <button toolTip="Add a new server…" wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-bn-qfo" userLabel="Add Button">
-                                                        <rect key="frame" x="8" y="0.0" width="21" height="21"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="21" id="NgJ-b3-tf6"/>
-                                                        </constraints>
-                                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="Htr-jt-dmG">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="addItem:" target="-2" id="xYL-vu-HiN"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button toolTip="Remove selected servers…" wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fh6-L5-tIk" userLabel="Remove Button">
-                                                        <rect key="frame" x="28" y="0.0" width="21" height="21"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="21" id="wOP-cY-Vgx"/>
-                                                        </constraints>
-                                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="WfB-wP-6w1">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="remove:" target="ZRA-HZ-T5t" id="FO9-nE-X5d"/>
-                                                            <binding destination="ZRA-HZ-T5t" name="enabled" keyPath="selection.@count" id="58E-lE-gq3"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView wantsLayer="YES" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Vh-jw-5mT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="242" height="21"/>
+                                                        <edgeInsets key="edgeInsets" left="8" right="8" top="0.0" bottom="0.0"/>
+                                                        <beginningViews>
+                                                            <button toolTip="Add a new server…" wantsLayer="YES" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-bn-qfo" userLabel="Add Button">
+                                                                <rect key="frame" x="8" y="3" width="11" height="15"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="21" id="NgJ-b3-tf6"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="Htr-jt-dmG">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="addItem:" target="-2" id="xYL-vu-HiN"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Remove selected servers…" wantsLayer="YES" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fh6-L5-tIk" userLabel="Remove Button">
+                                                                <rect key="frame" x="27" y="3" width="11" height="15"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="21" id="wOP-cY-Vgx"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="WfB-wP-6w1">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="remove:" target="ZRA-HZ-T5t" id="FO9-nE-X5d"/>
+                                                                    <binding destination="ZRA-HZ-T5t" name="enabled" keyPath="selection.@count" id="58E-lE-gq3"/>
+                                                                </connections>
+                                                            </button>
+                                                        </beginningViews>
+                                                        <endViews>
+                                                            <button toolTip="Remove selected servers…" wantsLayer="YES" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="awq-q5-Ocf" userLabel="Share Button">
+                                                                <rect key="frame" x="220" y="3" width="14" height="16"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="21" id="wKq-uI-WZw"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSActionTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="5a0-dX-cD8">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="actionButton:" target="-2" id="XIO-cp-s7M"/>
+                                                                    <binding destination="ZRA-HZ-T5t" name="enabled" keyPath="selection.@count" id="0U6-9C-4JR"/>
+                                                                    <outlet property="menu" destination="6Pe-1w-cdR" id="JUh-09-rOs"/>
+                                                                </connections>
+                                                            </button>
+                                                        </endViews>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="6J1-zO-1Oh"/>
-                                                    <constraint firstItem="fh6-L5-tIk" firstAttribute="top" secondItem="mSe-bn-qfo" secondAttribute="top" id="7r7-5m-Eul"/>
-                                                    <constraint firstItem="mSe-bn-qfo" firstAttribute="leading" secondItem="nMf-0K-86H" secondAttribute="leading" constant="8" id="ETm-By-sgr"/>
-                                                    <constraint firstItem="fh6-L5-tIk" firstAttribute="bottom" secondItem="mSe-bn-qfo" secondAttribute="bottom" id="bOF-do-O1O"/>
-                                                    <constraint firstAttribute="bottom" secondItem="mSe-bn-qfo" secondAttribute="bottom" id="h6K-jE-pvZ"/>
-                                                    <constraint firstItem="fh6-L5-tIk" firstAttribute="leading" secondItem="mSe-bn-qfo" secondAttribute="trailing" constant="-1" id="mVx-gG-YG6"/>
-                                                    <constraint firstItem="mSe-bn-qfo" firstAttribute="top" secondItem="nMf-0K-86H" secondAttribute="top" id="rbR-z6-6qa"/>
+                                                    <constraint firstAttribute="bottom" secondItem="2Vh-jw-5mT" secondAttribute="bottom" id="CNw-eL-kgq"/>
+                                                    <constraint firstItem="2Vh-jw-5mT" firstAttribute="leading" secondItem="nMf-0K-86H" secondAttribute="leading" id="Exu-zm-c6N"/>
+                                                    <constraint firstItem="2Vh-jw-5mT" firstAttribute="top" secondItem="nMf-0K-86H" secondAttribute="top" id="cyf-48-yER"/>
+                                                    <constraint firstAttribute="trailing" secondItem="2Vh-jw-5mT" secondAttribute="trailing" id="eo4-in-00z"/>
                                                 </constraints>
                                             </customView>
                                         </subviews>
@@ -402,9 +433,30 @@
             <point key="canvasLocation" x="-216.5" y="67"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="YOE-1I-d5V"/>
+        <menu id="6Pe-1w-cdR">
+            <items>
+                <menuItem title="Export Items…" id="SZ4-jR-nVJ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="share:" target="-2" id="XwD-td-VBX"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Import Items…" id="mYs-CD-iXZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="importData:" target="-2" id="DsD-jo-Av1"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="id3-v8-Zpc"/>
+            </connections>
+            <point key="canvasLocation" x="-217" y="336"/>
+        </menu>
     </objects>
     <resources>
         <image name="AppIcon" width="128" height="128"/>
+        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSSmartBadgeTemplate" width="14" height="14"/>

@@ -189,4 +189,13 @@ public class DSFMountingYardItem: NSObject
 		)
 		return item
 	}
+
+	static func fromDictionary(json: [String: Any]) -> DSFMountingYardItem?
+	{
+		let item = DSFMountingYardItem()
+		item.address = json["address"] as! String
+		item.username = json["username"] as! String
+		item.guest = json["guest"] != nil
+		return item
+	}
 }
