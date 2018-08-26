@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23143A9B2111460F00C8BFE8 /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 23143A9A2111460F00C8BFE8 /* DocumentIcon.icns */; };
 		238AAED3210FC18B008F9E18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238AAED2210FC18B008F9E18 /* AppDelegate.swift */; };
 		238AAED5210FC18C008F9E18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 238AAED4210FC18C008F9E18 /* Assets.xcassets */; };
 		238AAED8210FC18C008F9E18 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238AAED6210FC18C008F9E18 /* MainMenu.xib */; };
@@ -19,16 +18,6 @@
 		23AC1D2121141BC300531FCD /* DSFMountingYardSettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC1D1F21141BC300531FCD /* DSFMountingYardSettingsWindowController.swift */; };
 		23AC1D2221141BC300531FCD /* DSFMountingYardSettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23AC1D2021141BC300531FCD /* DSFMountingYardSettingsWindowController.xib */; };
 		23AC1D242114603100531FCD /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 23AC1D232114603100531FCD /* Credits.rtf */; };
-		23D0131121156FD2009737FE /* icon-ftp-16x16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0130921156FD1009737FE /* icon-ftp-16x16@2x.png */; };
-		23D0131221156FD2009737FE /* icon-ftp-16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0130A21156FD1009737FE /* icon-ftp-16x16.png */; };
-		23D0131321156FD2009737FE /* icon-smb-16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0130B21156FD1009737FE /* icon-smb-16x16.png */; };
-		23D0131421156FD2009737FE /* icon-smb-16x16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0130C21156FD1009737FE /* icon-smb-16x16@2x.png */; };
-		23D0131521156FD2009737FE /* icon-afp-16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0130D21156FD1009737FE /* icon-afp-16x16.png */; };
-		23D0131621156FD2009737FE /* icon-afp-16x16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0130E21156FD2009737FE /* icon-afp-16x16@2x.png */; };
-		23D0131721156FD2009737FE /* icon-vnc-16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0130F21156FD2009737FE /* icon-vnc-16x16.png */; };
-		23D0131821156FD2009737FE /* icon-vnc-16x16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0131021156FD2009737FE /* icon-vnc-16x16@2x.png */; };
-		23D0131B21157479009737FE /* icon-unknown-16x16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0131921157479009737FE /* icon-unknown-16x16@2x.png */; };
-		23D0131C21157479009737FE /* icon-unknown-16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D0131A21157479009737FE /* icon-unknown-16x16.png */; };
 		23D0131E211575B3009737FE /* DSFImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D0131D211575B3009737FE /* DSFImageManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +45,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		23143A9A2111460F00C8BFE8 /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = DocumentIcon.icns; path = Resources/DocumentIcon.icns; sourceTree = "<group>"; };
 		23845BAC2128CF6A00B68382 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		238AAECF210FC18B008F9E18 /* Mounting Yard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mounting Yard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		238AAED2210FC18B008F9E18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,16 +63,6 @@
 		23AC1D1F21141BC300531FCD /* DSFMountingYardSettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFMountingYardSettingsWindowController.swift; sourceTree = "<group>"; };
 		23AC1D2021141BC300531FCD /* DSFMountingYardSettingsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSFMountingYardSettingsWindowController.xib; sourceTree = "<group>"; };
 		23AC1D232114603100531FCD /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		23D0130921156FD1009737FE /* icon-ftp-16x16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-ftp-16x16@2x.png"; sourceTree = "<group>"; };
-		23D0130A21156FD1009737FE /* icon-ftp-16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-ftp-16x16.png"; sourceTree = "<group>"; };
-		23D0130B21156FD1009737FE /* icon-smb-16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-smb-16x16.png"; sourceTree = "<group>"; };
-		23D0130C21156FD1009737FE /* icon-smb-16x16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-smb-16x16@2x.png"; sourceTree = "<group>"; };
-		23D0130D21156FD1009737FE /* icon-afp-16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-afp-16x16.png"; sourceTree = "<group>"; };
-		23D0130E21156FD2009737FE /* icon-afp-16x16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-afp-16x16@2x.png"; sourceTree = "<group>"; };
-		23D0130F21156FD2009737FE /* icon-vnc-16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-vnc-16x16.png"; sourceTree = "<group>"; };
-		23D0131021156FD2009737FE /* icon-vnc-16x16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-vnc-16x16@2x.png"; sourceTree = "<group>"; };
-		23D0131921157479009737FE /* icon-unknown-16x16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-unknown-16x16@2x.png"; sourceTree = "<group>"; };
-		23D0131A21157479009737FE /* icon-unknown-16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-unknown-16x16.png"; sourceTree = "<group>"; };
 		23D0131D211575B3009737FE /* DSFImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +111,6 @@
 				238AAEF1210FC801008F9E18 /* Mounting Yard.entitlements */,
 				23845BAC2128CF6A00B68382 /* README.md */,
 				238AAED4210FC18C008F9E18 /* Assets.xcassets */,
-				23143A9A2111460F00C8BFE8 /* DocumentIcon.icns */,
 				238AAED6210FC18C008F9E18 /* MainMenu.xib */,
 				238AAED9210FC18C008F9E18 /* Info.plist */,
 				238AAEDA210FC18C008F9E18 /* Mounting_Yard.entitlements */,
@@ -169,16 +146,6 @@
 			children = (
 				23AC1D2021141BC300531FCD /* DSFMountingYardSettingsWindowController.xib */,
 				23AC1D232114603100531FCD /* Credits.rtf */,
-				23D0130D21156FD1009737FE /* icon-afp-16x16.png */,
-				23D0130E21156FD2009737FE /* icon-afp-16x16@2x.png */,
-				23D0130A21156FD1009737FE /* icon-ftp-16x16.png */,
-				23D0130921156FD1009737FE /* icon-ftp-16x16@2x.png */,
-				23D0130B21156FD1009737FE /* icon-smb-16x16.png */,
-				23D0130C21156FD1009737FE /* icon-smb-16x16@2x.png */,
-				23D0131A21157479009737FE /* icon-unknown-16x16.png */,
-				23D0131921157479009737FE /* icon-unknown-16x16@2x.png */,
-				23D0130F21156FD2009737FE /* icon-vnc-16x16.png */,
-				23D0131021156FD2009737FE /* icon-vnc-16x16@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -273,19 +240,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23D0131321156FD2009737FE /* icon-smb-16x16.png in Resources */,
-				23D0131B21157479009737FE /* icon-unknown-16x16@2x.png in Resources */,
 				23AC1D242114603100531FCD /* Credits.rtf in Resources */,
-				23D0131621156FD2009737FE /* icon-afp-16x16@2x.png in Resources */,
-				23D0131421156FD2009737FE /* icon-smb-16x16@2x.png in Resources */,
-				23D0131221156FD2009737FE /* icon-ftp-16x16.png in Resources */,
-				23143A9B2111460F00C8BFE8 /* DocumentIcon.icns in Resources */,
-				23D0131C21157479009737FE /* icon-unknown-16x16.png in Resources */,
-				23D0131521156FD2009737FE /* icon-afp-16x16.png in Resources */,
 				238AAED5210FC18C008F9E18 /* Assets.xcassets in Resources */,
-				23D0131121156FD2009737FE /* icon-ftp-16x16@2x.png in Resources */,
-				23D0131821156FD2009737FE /* icon-vnc-16x16@2x.png in Resources */,
-				23D0131721156FD2009737FE /* icon-vnc-16x16.png in Resources */,
 				238AAED8210FC18C008F9E18 /* MainMenu.xib in Resources */,
 				23AC1D2221141BC300531FCD /* DSFMountingYardSettingsWindowController.xib in Resources */,
 			);

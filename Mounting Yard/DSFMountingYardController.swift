@@ -104,11 +104,6 @@ extension DSFMountingYardController
 				return self.mount(item: items.first!)
 			}
 		}
-		else if url.pathExtension == "mountingYardExportFile"
-		{
-			// Merge in the content
-			_ = self.importItems(from: url)
-		}
 		return false
 	}
 
@@ -174,7 +169,7 @@ extension DSFMountingYardController
 	func shareItems() -> Bool
 	{
 		let mySave = NSSavePanel()
-		mySave.allowedFileTypes = ["mountingYardExportFile"]
+		mySave.allowedFileTypes = ["mountingYardArchive"]
 
 		mySave.begin { (result) -> Void in
 			if result == NSApplication.ModalResponse.OK
@@ -217,7 +212,7 @@ extension DSFMountingYardController
 	func importItems() -> Bool
 	{
 		let myOpen = NSOpenPanel()
-		myOpen.allowedFileTypes = ["mountingYardExportFile"]
+		myOpen.allowedFileTypes = ["mountingYardArchive"]
 
 		myOpen.begin { (result) -> Void in
 			if result == NSApplication.ModalResponse.OK

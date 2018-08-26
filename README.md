@@ -45,7 +45,3 @@ Due to sandbox restrictions, the files are stored in
 which allows for both spotlight indexing and time machine backups
 
 ![./Mounting%20Yard/Art/spotlight.png](./Mounting%20Yard/Art/spotlight.png)
-
-## Thanks
-
-Application icon from [noto-emoji](https://github.com/googlei18n/noto-emoji), provided under the [Apache license, version 2.0](https://github.com/googlei18n/noto-emoji/blob/master/LICENSE)

@@ -34,26 +34,26 @@ class DSFImageManager
 {
 	static func afpImage() -> NSImage
 	{
-		return NSImage(named: NSImage.Name(rawValue: "icon-afp-16x16"))!
+		return NSImage(named: NSImage.Name(rawValue: "icon-afp"))!
 	}
 
 	static func ftpImage() -> NSImage
 	{
-		return NSImage(named: NSImage.Name(rawValue: "icon-ftp-16x16"))!
+		return NSImage(named: NSImage.Name(rawValue: "icon-ftp"))!
 	}
 
 	static func smbImage() -> NSImage
 	{
-		return NSImage(named: NSImage.Name(rawValue: "icon-smb-16x16"))!
+		return NSImage(named: NSImage.Name(rawValue: "icon-smb"))!
 	}
 
 	static func vncImage() -> NSImage
 	{
-		return NSImage(named: NSImage.Name(rawValue: "icon-vnc-16x16"))!
+		return NSImage(named: NSImage.Name(rawValue: "icon-vnc"))!
 	}
 
 	static func unknownImage() -> NSImage
 	{
-		return NSImage(named: NSImage.Name(rawValue: "icon-unknown-16x16"))!
+		return NSImage(named: NSImage.Name(rawValue: "icon-unknown"))!
 	}
 }
